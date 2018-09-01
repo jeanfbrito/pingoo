@@ -10,6 +10,12 @@ class WatchersController < ApplicationController
   def show
   end
 
+  def watch_now
+    @watcher = Watcher.find(params[:id])
+    @watcher.watch_it
+    redirect_to @watcher
+  end
+
   # GET /watchers/new
   def new
     @watcher = Watcher.new

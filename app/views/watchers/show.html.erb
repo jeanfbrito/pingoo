@@ -16,8 +16,18 @@
 </p>
 
 <p>
+  <strong>Current response:</strong>
+  <%= @watcher.current_response %>
+</p>
+
+<p>
   <strong>Previous status:</strong>
   <%= @watcher.previous_status %>
+</p>
+
+<p>
+  <strong>Previous response:</strong>
+  <%= @watcher.previous_response %>
 </p>
 
 <%= link_to 'Edit', edit_watcher_path(@watcher) %> |
