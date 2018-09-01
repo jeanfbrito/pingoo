@@ -21,7 +21,7 @@
         <td><%= watcher.url %></td>
         <td><%= watcher.current_status %></td>
         <td><%= watcher.previous_status %></td>
-        <td><%= time_ago_in_words(watcher.last_watched) %></td>
+        <td><%= time_ago_in_words(watcher.last_watched) if watcher.last_watched.present?  %></td>
         <td><%= link_to 'Watch Now', watch_now_watcher_path(watcher) %></td>
         <td><%= link_to 'Show', watcher %></td>
         <td><%= link_to 'Edit', edit_watcher_path(watcher) %></td>
