@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @watcher.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @watcher.url %>
+</p>
+
+<p>
+  <strong>Current status:</strong>
+  <%= @watcher.current_status %>
+</p>
+
+<p>
+  <strong>Previous status:</strong>
+  <%= @watcher.previous_status %>
+</p>
+
+<%= link_to 'Edit', edit_watcher_path(@watcher) %> |
+<%= link_to 'Back', watchers_path %>
