@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_01_004424) do
+ActiveRecord::Schema.define(version: 2018_09_01_100404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2018_09_01_004424) do
     t.string "previous_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "current_response"
+    t.text "previous_response"
+    t.datetime "last_watched"
   end
 
 end
