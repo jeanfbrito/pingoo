@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'watchers#index'
+
   resources :watchers do
     member do
       get 'watch_now'
