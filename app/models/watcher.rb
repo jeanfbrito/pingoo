@@ -1,11 +1,15 @@
 class Watcher < ApplicationRecord
+  validates :name, :url, presence: true
+
   def watch_it
-    self.previous_status = self.current_status
-    self.previous_response = self.current_response
-    response = HTTP.get(self.url)
-    self.current_status = response.code.to_s
-    self.current_response = response.to_s
-    self.last_watched = Time.zone.now
-    self.save!
+    response = HTTP.get(url)
+
+    update(
+      last_watched: Time.zone.now,
+      current_status: response.code.to_s,
+      previous_status: current_status,
+      current_response: response.to_s,
+      previous_response: current_response  
+    )
   end
 end
