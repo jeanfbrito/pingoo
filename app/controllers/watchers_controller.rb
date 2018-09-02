@@ -12,8 +12,9 @@ class WatchersController < ApplicationController
 
   def watch_now
     @watcher = Watcher.find(params[:id])
-    @watcher.watch_it
-    redirect_to @watcher
+    WatcherWorker.perform_async(@watcher.id)
+    flash[:alert] = 'O worker foi criado'
+    redirect_to watchers_path
   end
 
   # GET /watchers/new
