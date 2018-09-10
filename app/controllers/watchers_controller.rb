@@ -10,12 +10,6 @@ class WatchersController < ApplicationController
   def show
   end
 
-  def watch_now
-    @watcher = Watcher.find(params[:id])
-    @watcher.watch_it
-    redirect_to @watcher
-  end
-
   # GET /watchers/new
   def new
     @watcher = Watcher.new
@@ -30,6 +24,7 @@ class WatchersController < ApplicationController
     @watcher = Watcher.new(watcher_params)
 
     if @watcher.save
+      WatchJob.perform_now(@watcher.id)
       redirect_to @watcher, notice: 'Watcher was successfully created.'
     else
       render :new
@@ -59,6 +54,6 @@ class WatchersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def watcher_params
-      params.require(:watcher).permit(:name, :url, :current_status, :previous_status)
+      params.require(:watcher).permit(:name, :url, :timer)
     end
 end

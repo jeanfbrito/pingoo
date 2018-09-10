@@ -1,4 +1,10 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+
+  root to: 'watchers#index'
+
   resources :watchers do
     member do
       get 'watch_now'

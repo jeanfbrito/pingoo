@@ -13,7 +13,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'bootstrap', '~> 4.1.3'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'http', '~> 3.3'
-
+gem 'sidekiq', '~> 5.2.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
