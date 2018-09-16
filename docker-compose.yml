@@ -3,11 +3,10 @@ version: '3'
 services:
   rails:
     build: .
-    command: ruby bin/rails s -p 3000 -b '0.0.0.0'
+    command: ruby bin/rails_docker
     volumes:
       - .:/app
     links:
-      - redis
       - postgres
     ports:
       - "3000:3000"
@@ -36,9 +35,10 @@ services:
 
   sidekiq:
     build: .
-    command: bundle exec sidekiq -C config/sidekiq.yml
+    command: ruby bin/sidekiq_docker
     links:
       - redis
+      - rails
       - postgres
     volumes:
       - .:/app
